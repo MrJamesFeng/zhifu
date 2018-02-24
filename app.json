@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/detail/detail",
+    "pages/home/home",
+    "pages/themes/themes"
+  ],
+  "window": {
+    "backgroundTextStyle": "white",
+    "navigationBarBackgroundColor": "#48C23D",
+    "navigationBarTitleText": "zhifu",
+    "navigationBarTextStyle": "white"
+  }
+}
