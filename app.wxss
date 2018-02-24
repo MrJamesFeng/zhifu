@@ -1,4 +1,5 @@
 /**app.wxss**/
+
 .container {
   height: 100%;
   display: flex;
@@ -7,4 +8,18 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-} 
+}
+
+text,view {
+  font-family: Helvetica,
+                 Arial,
+                 "Hiragino Sans GB",
+                 "Source Han Sans CN",
+                 "PingFang SC",
+                 Roboto,
+                 "微软雅黑",
+                 "Heiti SC",
+                 "Microsoft Yahei",
+                 sans-serif;
+  font-size: 14px;
+}

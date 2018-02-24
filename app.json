@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/logs/logs",
-    "pages/detail/detail",
     "pages/home/home",
-    "pages/themes/themes"
+    "pages/detail/detail",
+    "pages/themes/themes",
+    "pages/index/index",
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "white",

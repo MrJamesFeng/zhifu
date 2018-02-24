@@ -1,2 +1,75 @@
 <!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<!-- <text>pages/home/home.wxml</text> -->
+<!-- <loading hidden="{{hideLoading}}">
+加载数据中...
+</loading> -->
+<view class='typeChooseContainer'>
+  <view class="daily {{currentTab==0?'on':''}}" bindtap='changeType' data-type='0'>日报</view>
+  <view class="handPick {{currentTab==1?'on':''}}" bindtap='changeType' data-type='1'>精选</view>
+</view>
+
+<swiper current="{{currentTab}}" style='height:{{screenHeight-31}}px' class='columns_box'>
+  <!-- 日报  -->
+  <swiper-item>
+    <swiper autoplay indicator-dots indicator-color="gray" indicator-active-color="blue">
+      <block wx:for="{{top_stories}}" wx:for-item="top_storie">
+        <swiper-item>
+          <navigator url='../detail/detail' open-type='navigate'>
+            <image src='{{top_storie.image}}' class='top_storie_image' mode='scaleToFill'></image>
+          </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <view class='columnContainer'>
+      <view>专栏</view>
+      <view>你想知道的日报专栏</view>
+    </view>
+
+    <scroll-view scroll-y="true">
+      <view class='columnsContainer'>
+        <view wx:if="{{others.length>0}}" class='columns'>
+          <block wx:for="{{others}}" wx:for-item="story">
+            <navigator url='../detail/detail' open-type='navigate'>
+              <view class='others'>
+                <view class='avtar'>
+                  <image src='{{story.thumbnail}}' class='avtar_image'></image>
+                </view>
+                <view class='content'>
+                  <view class='description'>{{story.description}}</view>
+                  <view class='name'>{{story.name}}</view>
+                </view>
+              </view>
+            </navigator>
+          </block>
+        </view>
+        <view wx:else>
+          <view>没有专栏内容</view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+
+
+  <!--精选  -->
+  <swiper-item>
+    <scroll-view scroll-y="true" class='hot-box' bindscrolltolower="scrolltolower" upper-threshold="50" lower-threshold="100" class='hot-box'>
+      <view class='hot-main'>
+        <view class='hot-main-box'>
+          <view class='hot-main-title'>精选</view>
+          <view class='hot-main-subTitle'>呈现最新的精选日报</view>
+        </view>
+      </view>
+
+      <block wx:for="{{dataList}}" wx:for-item="dataDay">
+      <view class='hot-main-box'>{{dataDay.dateDay}}</view>
+      <block wx:for="{{dataDay.stories}}" wx:for-item="dataStory">
+<view class='hot-main-box'>{{dataStory.title}}</view>
+      </block>
+      </block>
+      
+
+    </scroll-view>
+  </swiper-item>
+
+</swiper>
