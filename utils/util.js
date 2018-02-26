@@ -81,7 +81,7 @@ module.exports = {
       data: {},
       header: header ? header : { "Content-Type": "application/json" },
       success: function (res) {
-        fn(res["data"]);
+        fn(res["data"])
       },
       complete:function(){
         setTimeout(function () { wx.hideLoading()},1000)

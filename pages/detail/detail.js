@@ -12,14 +12,20 @@ Page({
     comments:[],
     shareBoxDisplay:"none",
     modalHidden:true,
-    modalValue:""
+    modalValue:"",
+    winHeight:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  console.log(options)
+  // console.log(options)
+  wx.getSystemInfo({
+    success: (res)=> {
+      this.setData({ winHeight: res.screenHeight})
+    },
+  })
   var id = options["id"];
     util.AJAX("news/" + id,(res)=>{
       console.log(res)

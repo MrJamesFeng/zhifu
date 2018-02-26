@@ -1,10 +1,18 @@
 /* pages/detail/detail.wxss */
+.contain_detail_cnt{
+  width: 100%;
+  height: 100%;
+}
+.box-title{
+  padding: 25px 20px;
+  background: #f9f9f9;
+}
 .detail-title{
-  height: 80rpx;
-  font-size: 16px;
+  line-height: 25px;
+  font-size: 18px;
+  color: #000;
+  font-weight: 600;
   text-align: center;
-  padding-top: 15px;
-  border: 1px solid red;
 }
 .detail-containter{
   height: 100%;

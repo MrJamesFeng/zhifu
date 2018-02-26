@@ -1,49 +1,58 @@
 <!--pages/detail/detail.wxml-->
 <!-- <text>pages/detail/detail.wxml</text> -->
-<view class='detail-title'>{{title}}</view>
-<view class='detail-containter'>
-  <block wx:for="{{databody}}">
-    <image wx:if="{{item.length==3}}" src='{{item[0]}}' class='detail-img' mode='aspectFill'></image>
-    <view wx:else class='detail-content'>{{item}}</view>
-  </block>
+<scroll-view class='contain_detail_cnt' style='height:{{winHeight - 44}}px'>
 
-  <view class='comments-containter'>
-    <block wx:for="{{comments}}" wx:for-item="comment">
-      <view class='comment-box'>
-        <view class='avatar'>
-          <image src='{{comment.avatar}}' mode='aspectFill'></image>
-        </view>
-        <view class='comment-main'>
-          <text class='author'>"{{comment.author}}"</text>
-          <text class='likes'>"{{comment.likes}}"</text>
-          <text class='content'>"{{comment.content}}"</text>
-          <text class='time'>"{{comment.time}}"</text>
-        </view>
+  <view class='box-title'>
+    <view class='detail-title'>{{title}}</view>
+  </view>
+
+
+  <view class='detail-containter'>
+    <view class='detail-containter'>
+      <block wx:for="{{databody}}">
+        <image wx:if="{{item.length==3}}" src='{{item[0]}}' class='detail-img' mode='aspectFill'></image>
+        <view wx:else class='detail-content'>{{item}}</view>
+      </block>
+
+      <view class='comments-containter'>
+        <block wx:for="{{comments}}" wx:for-item="comment">
+          <view class='comment-box'>
+            <view class='avatar'>
+              <image src='{{comment.avatar}}' mode='aspectFill'></image>
+            </view>
+            <view class='comment-main'>
+              <text class='author'>"{{comment.author}}"</text>
+              <text class='likes'>"{{comment.likes}}"</text>
+              <text class='content'>"{{comment.content}}"</text>
+              <text class='time'>"{{comment.time}}"</text>
+            </view>
+          </view>
+        </block>
       </view>
-    </block>
-  </view>
-
-  <view class='interaction'>
-    <input type='text' placeholder='回复' class='interaction-comment'></input>
-    <view class='interaction-others'>
-      <image src='../../images/zan.png' mode='aspectFill'></image>
-      <image src='../../images/comments.png' mode='aspectFill'></image>
-      <image src='../../images/share.png' mode='aspectFill' bindtap='shareAction'></image>
     </view>
   </view>
+</scroll-view>
 
-  <view class='share-box' style='display:{{shareBoxDisplay}}'>
-    <view class='share-method'>
-      <image class='share-wechat' bindtap='shareModel' src='../../images/wechat.png' data-source="分享至微信" mode='aspectFill'></image>
-      <image class='share-wechat' bindtap='shareModel' src='../../images/qq.png' data-source="分享至QQ" mode='aspectFill'></image>
-      <image class='share-wechat' bindtap='shareModel' src='../../images/pengyou.png' data-source="分享至朋友圈" mode='aspectFill'></image>
-    </view>
-    <view class='share-close' bindtap='shareClose'>关闭</view>
+
+<view class='interaction'>
+  <input type='text' placeholder='回复' class='interaction-comment'></input>
+  <view class='interaction-others'>
+    <image src='../../images/zan.png' mode='aspectFill'></image>
+    <image src='../../images/comments.png' mode='aspectFill'></image>
+    <image src='../../images/share.png' mode='aspectFill' bindtap='shareAction'></image>
   </view>
+</view>
 
-  <modal class="modal" hidden="{{modalHidden}}" no-cancel bindconfirm="modalChange">
+<view class='share-box' style='display:{{shareBoxDisplay}}'>
+  <view class='share-method'>
+    <image class='share-wechat' bindtap='shareModel' src='../../images/wechat.png' data-source="分享至微信" mode='aspectFill'></image>
+    <image class='share-wechat' bindtap='shareModel' src='../../images/qq.png' data-source="分享至QQ" mode='aspectFill'></image>
+    <image class='share-wechat' bindtap='shareModel' src='../../images/pengyou.png' data-source="分享至朋友圈" mode='aspectFill'></image>
+  </view>
+  <view class='share-close' bindtap='shareClose'>关闭</view>
+</view>
+
+<modal class="modal" hidden="{{modalHidden}}" no-cancel bindconfirm="modalChange">
   <view>{{modalValue}}</view>
 
-  </modal>
-
-</view>
+</modal>

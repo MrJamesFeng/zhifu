@@ -8,44 +8,40 @@
   <view class="handPick {{currentTab==1?'on':''}}" bindtap='changeType' data-type='1'>精选</view>
 </view>
 
-<swiper current="{{currentTab}}" style='height:{{screenHeight-31}}px' class='columns_box'>
+<swiper current="{{currentTab}}" style='height:{{screenHeight-31}}px' class='columns_box' duration='300'>
   <!-- 日报  -->
   <swiper-item>
-    <swiper autoplay indicator-dots indicator-color="gray" indicator-active-color="blue">
-      <block wx:for="{{top_stories}}" wx:for-item="top_storie">
-        <swiper-item>
-          <navigator url='../detail/detail?id={{top_storie.id}}' open-type='navigate'>
-            <image src='{{top_storie.image}}' class='top_storie_image' mode='scaleToFill'></image>
-          </navigator>
-        </swiper-item>
-      </block>
-    </swiper>
 
-    <view class='columnContainer'>
-      <view>专栏</view>
-      <view>你想知道的日报专栏</view>
-    </view>
-
-    <scroll-view scroll-y="true">
-      <view class='columnsContainer'>
-        <view wx:if="{{others.length>0}}" class='columns'>
-          <block wx:for="{{others}}" wx:for-item="story">
-            <navigator url='../themes/themes?id={{story.id}}' open-type='navigate'>
-              <view class='others'>
-                <view class='avtar'>
-                  <image src='{{story.thumbnail}}' class='avtar_image'></image>
-                </view>
-                <view class='content'>
-                  <view class='description'>{{story.description}}</view>
-                  <view class='name'>{{story.name}}</view>
-                </view>
-              </view>
+    <scroll-view scroll-y="true" class='hot-box'>
+      <swiper autoplay indicator-dots indicator-color="gray" indicator-active-color="blue" duration='300' class='swiper-box'>
+        <block wx:for="{{top_stories}}" wx:for-item="top_storie">
+          <swiper-item>
+            <navigator url='../detail/detail?id={{top_storie.id}}' open-type='navigate'>
+              <image src='{{top_storie.image}}' class='top_storie_image' mode='aspectFill'></image>
             </navigator>
-          </block>
-        </view>
-        <view wx:else>
-          <view>没有专栏内容</view>
-        </view>
+          </swiper-item>
+        </block>
+      </swiper>
+
+      <view class='columnContainer'>
+        <view class='columnTitle'>专栏</view>
+        <view class='columnSubTitle'>你想知道的日报专栏</view>
+      </view>
+
+      <view class='columnsContainer'>
+        <block wx:for="{{others}}" wx:for-item="story">
+          <navigator url='../themes/themes?id={{story.id}}' open-type='navigate'>
+            <view class='others'>
+              <view class='avtar'>
+                <image src='{{story.thumbnail}}' class='avtar_image'></image>
+              </view>
+              <view class='content'>
+                <view class='name'>{{story.name}}</view>
+                <view class='description'>{{story.description}}</view>
+              </view>
+            </view>
+          </navigator>
+        </block>
       </view>
     </scroll-view>
   </swiper-item>
@@ -55,24 +51,29 @@
   <swiper-item>
     <scroll-view scroll-y="true" class='hot-box' bindscrolltolower="scrolltolower" upper-threshold="50" lower-threshold="100">
       <view class='hot-main'>
+
         <view class='hot-main-box'>
           <view class='hot-main-title'>精选</view>
           <view class='hot-main-subTitle'>呈现最新的精选日报</view>
         </view>
       </view>
 
-      <block wx:for="{{dataList}}" wx:for-item="dataDay">
-        <view class='hot-main-box hot-main-box-title'>{{dataDay.dateDay}}</view>
-        <block wx:for="{{dataDay.stories}}" wx:for-item="dataStory">
-          <navigator url='../detail/detail?id={{dataStory.id}}'>
-            <view class='hot-main-box'>
-              <view>{{dataStory.title}}</view>
-              <view>知乎日报</view>
-            </view>
-          </navigator>
-        </block>
-      </block>
+      <view class='hot-main-box'>
+        <block wx:for="{{dataList}}" wx:for-item="dataDay">
+          <view class='hot-box-top'>
+            <view class='hot-main-box-title'>{{dataDay.dateDay}}</view>
+          </view>
 
+          <block wx:for="{{dataDay.stories}}" wx:for-item="dataStory">
+            <navigator url='../detail/detail?id={{dataStory.id}}' id='{{dataStory.id}}'>
+              <view class='list-box'>
+                <view class='list-box-title'>{{dataStory.title}}</view>
+                <view class='list-box-sub'>知乎日报</view>
+              </view>
+            </navigator>
+          </block>
+        </block>
+      </view>
 
     </scroll-view>
   </swiper-item>

@@ -9,7 +9,8 @@
   "window": {
     "backgroundTextStyle": "white",
     "navigationBarBackgroundColor": "#48C23D",
-    "navigationBarTitleText": "zhifu",
-    "navigationBarTextStyle": "white"
+    "navigationBarTitleText": "首页",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#FFF"
   }
 }
