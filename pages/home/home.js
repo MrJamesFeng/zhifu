@@ -34,17 +34,17 @@ Page({
       console.log(res)
       var dateData = {}
       var dataListDateCurrent = res["date"]
-      dateData["dateDay"] = util.getFormatDate(dataListDateCurrent)
+      dateData["dateDay"] = util.getFormatDate(dataListDateCurrent)["dateDay"]
       dateData["stories"] = res["stories"]
-      this.setData({ top_stories: res["top_stories"], dataList: [dateData]})
+      this.setData({ top_stories: res["top_stories"], dataList: [dateData], dataListDateCurrent: dataListDateCurrent})
       // console.log(this.data)
       
     })
 
     // 日报
     util.AJAX("themes", (res)=> {
-      console.log("日报")
-      console.log(res)
+      // console.log("日报")
+      // console.log(res)
       this.setData({ others: res["others"]})
       // console.log(this.data)
 
@@ -111,10 +111,16 @@ Page({
 
   
   scrolltolower:function(e){ 
-
-    util.AJAX("news/before/" + currentDate, function (res) {
+    console.log(e)
+    util.AJAX("news/before/" + this.data.dataListDateCurrent, (res)=> {
       console.log("news/before/")
       console.log(res)
+      var dateData = {}
+      var dataListDateCurrent = res["date"]
+      dateData["dateDay"] = util.getFormatDate(dataListDateCurrent)["dateDay"]
+      dateData["stories"] = res["stories"]
+      this.setData({ dataList: this.data.dataList.concat(dateData), dataListDateCurrent: dataListDateCurrent })
+      // console.log(this.data)
     })
   }
   

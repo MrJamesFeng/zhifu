@@ -1,18 +1,26 @@
 // pages/themes/themes.js
+var util = require("../../utils/util.js")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    name:'',
+    description:'',
+    stories:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var id = options.id
+    // console.log(options)
+    util.AJAX("theme/" + id, (res)=>{
+      // console.log(res)
+      this.setData({ name: res.name, description: res.description, stories: res.stories})
+    })
   },
 
   /**

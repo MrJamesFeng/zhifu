@@ -1,2 +1,14 @@
 <!--pages/themes/themes.wxml-->
-<text>pages/themes/themes.wxml</text>
+<!-- <text>pages/themes/themes.wxml</text> -->
+<view class='themeHeader'>
+  <view class='themeName'>{{name}}</view>
+  <view class='themeDescription'>{{description}}</view>
+</view>
+
+<view class='themeContent-box'>
+  <block wx:for="{{stories}}">
+    <navigator url='../detail/detail?id={{item.id}}'>
+      <view class='themeContent'>{{item.title}}</view>
+    </navigator>
+  </block>
+</view>

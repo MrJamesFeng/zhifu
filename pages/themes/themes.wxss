@@ -1,1 +1,10 @@
 /* pages/themes/themes.wxss */
+.themeHeader{
+  height: 44px;
+}
+
+.themeContent{
+  height: 44px;
+  margin-top: 10px;
+  border: 1px solid burlywood;
+}

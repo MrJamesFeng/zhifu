@@ -63,6 +63,10 @@
   padding: 10px 0;
   margin-left: 42px;
 }
+.hot-box{
+  margin-bottom: 10px;
+  height: 100%;
+}
 .hot-main{
   margin-bottom: 20px;
   background: #fff;
@@ -70,4 +74,12 @@
   padding: 30px 20px;
   border: 1px solid orange;
 }
+.hot-main-box{
+  height: 80px;
+  border: 1px solid #48c23d;
 
+}
+.hot-main-box-title{
+  line-height: 80px;
+  text-align: center;
+}
