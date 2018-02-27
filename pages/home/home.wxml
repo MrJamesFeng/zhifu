@@ -75,7 +75,16 @@
         </block>
       </view>
 
+      <view class='loading-more' hidden='{{hideLoading}}'>
+        <view wx:if="{{haveMore}}" class='haveMore'>
+          <image src='../../images/loading.gif' mode='aspectFill' class='haveMore-img'></image>
+        </view>
+        <view wx:else class='noMore'>没有更多了</view>
+      </view>
+
     </scroll-view>
+
+
   </swiper-item>
 
 </swiper>

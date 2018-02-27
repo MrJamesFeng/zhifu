@@ -15,7 +15,9 @@ Page({
     screenWidth:0,
     dataList:[],
     dataListDateCurrent:0,
-    dataListDateCount:0
+    dataListDateCount:0,
+    hideLoading:true,
+    haveMore:true
     
   },
 
@@ -30,8 +32,8 @@ Page({
 
     // 精选
     util.AJAX("news/latest",(res)=>{
-      console.log("精选")
-      console.log(res)
+      // console.log("精选")
+      // console.log(res)
       var dateData = {}
       var dataListDateCurrent = res["date"]
       dateData["dateDay"] = util.getFormatDate(dataListDateCurrent)["dateDay"]
@@ -111,10 +113,14 @@ Page({
 
   
   scrolltolower:function(e){ 
-    console.log(e)
+    // console.log(e)
+    this.setData({ hideLoading:false})
     util.AJAX("news/before/" + this.data.dataListDateCurrent, (res)=> {
-      console.log("news/before/")
-      console.log(res)
+      // console.log("news/before/")
+      // console.log(res)
+      setTimeout(()=>{
+        this.setData({ hideLoading: true })
+      },2000)
       var dateData = {}
       var dataListDateCurrent = res["date"]
       dateData["dateDay"] = util.getFormatDate(dataListDateCurrent)["dateDay"]

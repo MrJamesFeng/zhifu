@@ -1,10 +1,46 @@
 /* pages/themes/themes.wxss */
 .themeHeader{
-  height: 44px;
+  height: 50px;
+  background: url("https://pic4.zhimg.com/60b69ef145a472f2c6b5302453f95eaa.jpg") no-repeat 0 50%;
+  background-size: cover;
+  padding: 30px 20px;
+
 }
 
+.themeName{
+  font-size: 34rpx;
+  color: #fff;
+}
+
+.themeDescription{
+  font-size: 26rpx;
+  color: #fff;
+  margin-top: 4px;
+}
+.themeContent-box{
+  margin-bottom: 20px;
+  background: #fff;
+}
 .themeContent{
-  height: 44px;
-  margin-top: 10px;
-  border: 1px solid burlywood;
+  display: block;
+  padding: 20px 20px 20px 40px;
+  border-bottom: solid 1px #f6f6f6;
+  font-size: 30rpx;
+  position: relative;
+}
+/*小圆点  */
+.themeContent::after{
+  display: block;
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #ff6511;
+  border-radius: 50%;
+  top: 25px;
+  left: 20px;
+}
+.list-box-title{
+  font-weight: 400;
+  line-height: 42rpx;
 }

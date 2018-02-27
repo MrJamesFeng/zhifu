@@ -13,7 +13,9 @@ Page({
     shareBoxDisplay:"none",
     modalHidden:true,
     modalValue:"",
-    winHeight:""
+    winHeight:"",
+    shareBottom:null,
+    shareOpacity:null
   },
 
   /**
@@ -53,8 +55,13 @@ Page({
         databody: body,
         title: res.title
       });
-      // console.log(this.data)
+      console.log(this.data)
       util.AJAX("story/" + id + "/short-comments",(res)=>{
+        console.log("/short-comments")
+        console.log(res)
+        for (var i = 0; i < res.comments.length;i++){
+          res.comments[i].time = util.getTime(res.comments[i].time)
+        }
         this.setData({ comments: res.comments})
         // console.log(this.data)
       })
@@ -111,8 +118,24 @@ Page({
   
   },
   shareAction:function(e){
+
+    this.setData({ shareBoxDisplay: "block" })
+
+    var animation = wx.createAnimation({
+      duration:100,
+      timingFunction:"ease"
+    })
+
+    setTimeout(()=>{
+      animation.bottom(0).step()
+      this.setData({ shareBottom: animation.export()})
+    },400)
+
+    setTimeout(()=>{
+      animation.opacity(0.3).step()
+      this.setData({ shareOpacity: animation.export() })
+    },400)
     
-    this.setData({ shareBoxDisplay:"block"})
   },
   shareModel:function(e){
     // console.log(e)

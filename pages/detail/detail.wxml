@@ -1,41 +1,45 @@
 <!--pages/detail/detail.wxml-->
 <!-- <text>pages/detail/detail.wxml</text> -->
-<scroll-view class='contain_detail_cnt' style='height:{{winHeight - 44}}px'>
+<scroll-view class='contain_detail_cnt' style='height:{{winHeight - 40}}px' scroll-y="true">
 
   <view class='box-title'>
     <view class='detail-title'>{{title}}</view>
   </view>
 
 
-  <view class='detail-containter'>
-    <view class='detail-containter'>
-      <block wx:for="{{databody}}">
-        <image wx:if="{{item.length==3}}" src='{{item[0]}}' class='detail-img' mode='aspectFill'></image>
-        <view wx:else class='detail-content'>{{item}}</view>
-      </block>
-
-      <view class='comments-containter'>
-        <block wx:for="{{comments}}" wx:for-item="comment">
-          <view class='comment-box'>
-            <view class='avatar'>
-              <image src='{{comment.avatar}}' mode='aspectFill'></image>
-            </view>
-            <view class='comment-main'>
-              <text class='author'>"{{comment.author}}"</text>
-              <text class='likes'>"{{comment.likes}}"</text>
-              <text class='content'>"{{comment.content}}"</text>
-              <text class='time'>"{{comment.time}}"</text>
-            </view>
-          </view>
-        </block>
-      </view>
-    </view>
+  <view class='detail-containter' scroll-y="true">
+    <block wx:for="{{databody}}">
+      <image wx:if="{{item.length===3}}" src='{{item[0]}}' class='detail-img' mode='aspectFill'></image>
+      <view wx:else class='detail-content'>{{item}}</view>
+    </block>
   </view>
+
+  <view class='comments-containter'>
+    <text class='comment-tittle'>最新评论</text>
+    <block wx:for="{{comments}}" wx:for-item="comment">
+      <view class='comment-box'>
+        <view class='avatar'>
+          <image src='{{comment.avatar}}' mode='aspectFill'></image>
+        </view>
+        <view class='comment-main'>
+          <view class='comment-author'>
+            <text class='author'>{{comment.author}}</text>
+            <text class='likes'>{{comment.likes}}</text>
+          </view>
+          <text class='content'>{{comment.content}}</text>
+          <text class='time'>{{comment.time}}</text>
+        </view>
+
+      </view>
+    </block>
+  </view>
+
+
 </scroll-view>
 
 
 <view class='interaction'>
-  <input type='text' placeholder='回复' class='interaction-comment'></input>
+  <input type='text' placeholder='回复' class='interaction-comment' maxlength='255' placeholder-class='interaction-comment-placeholder'></input>
   <view class='interaction-others'>
     <image src='../../images/zan.png' mode='aspectFill'></image>
     <image src='../../images/comments.png' mode='aspectFill'></image>
@@ -44,12 +48,16 @@
 </view>
 
 <view class='share-box' style='display:{{shareBoxDisplay}}'>
-  <view class='share-method'>
-    <image class='share-wechat' bindtap='shareModel' src='../../images/wechat.png' data-source="分享至微信" mode='aspectFill'></image>
-    <image class='share-wechat' bindtap='shareModel' src='../../images/qq.png' data-source="分享至QQ" mode='aspectFill'></image>
-    <image class='share-wechat' bindtap='shareModel' src='../../images/pengyou.png' data-source="分享至朋友圈" mode='aspectFill'></image>
+  <view class='share-box-show' animation="{{shareBottom}}">
+    <view class='share-method'>
+      <image class='share-method-image' bindtap='shareModel' src='../../images/wechat.png' data-source="分享至微信" mode='aspectFill'></image>
+      <image class='share-method-image' bindtap='shareModel' src='../../images/qq.png' data-source="分享至QQ" mode='aspectFill'></image>
+      <image class='share-method-image' bindtap='shareModel' src='../../images/pengyou.png' data-source="分享至朋友圈" mode='aspectFill'></image>
+      <image class='share-method-image' bindtap='shareModel' src='../../images/weibo.png' data-source="分享至朋友圈" mode='aspectFill'></image>
+    </view>
+    <view class='share-close' bindtap='shareClose'>关闭</view>
   </view>
-  <view class='share-close' bindtap='shareClose'>关闭</view>
+  <view class='share-box-opacity' bindtap='shareClose' animation="{{shareOpacity}}"></view>
 </view>
 
 <modal class="modal" hidden="{{modalHidden}}" no-cancel bindconfirm="modalChange">
